@@ -1,5 +1,5 @@
 start = [0.5, 0.6, 0.5];
-goal = [0.5, 0.5, 0.5];
+goal = [0.5, -0.6, 0.5];
 
 %get the transition matrix of the initial states
 Tstart = transl(start);
@@ -42,8 +42,10 @@ for i=1:length(t)
     T(:,:,i) =  Ts(:,:,i) * trotx(alpha_x(i)) * troty(alpha_y(i));
 end
 
-q = ur5_full.ikine6s(T);
-ur5_full.plot(q);
+qc = ur5_full.ikine6s(T);
+while(true)
+    ur5_full.plot(qc)
+end
 
 % p = transl(T);
 % plot3(p(:,1), p(:,2), p(:,3));
