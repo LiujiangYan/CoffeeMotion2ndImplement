@@ -1,3 +1,6 @@
+clear
+clc
+
 start = [0.5, 0.6, 0.5];
 goal = [0.5, -0.6, 0.5];
 
@@ -5,7 +8,8 @@ goal = [0.5, -0.6, 0.5];
 Tstart = transl(start);
 Tgoal = transl(goal);
 
-t = [0:0.01:2]';
+t = 0:0.01:2;
+t = t';
 
 %plan the path in Cartesian Space
 %get the inverse kinematics
