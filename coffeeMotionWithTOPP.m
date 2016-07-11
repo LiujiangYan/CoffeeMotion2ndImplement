@@ -4,18 +4,19 @@ clc
 start = [0.5, 0.6, 0.5];
 goal = [0.5, -0.6, 0.5];
 
-%get the transition matrix of the initial states
+% get the transition matrix of the initial states
 Tstart = transl(start);
 Tgoal = transl(goal);
 
-t = 0:0.01:2;
+% larger time step carries out more smooth path
+t = 0:0.1:2;
 t = t';
 
-%plan the path in Cartesian Space
-%get the inverse kinematics
+% plan the path in Cartesian Space
+% get the inverse kinematics
 Ts = ctraj(Tstart, Tgoal, length(t));
 
-%compute the end effecter orientation
+% compute the end effecter orientation
 Ts_x = reshape(Ts(1,4,:),length(t),1);
 vel_x = gradient(Ts_x)./gradient(t);
 acl_x = gradient(vel_x)./gradient(t);
@@ -31,7 +32,7 @@ acl_z = gradient(vel_z)./gradient(t);
 alpha_y = -atan2(acl_x, 9.81 + acl_z);
 alpha_x = -atan2(acl_y, 9.81 + acl_z);
 
-%construct the UR5 robot
+% construct the UR5 robot
 ur5_L(1) = Link('d', 0.182, 'a', 0, 'alpha', pi/2);
 ur5_L(2) = Link('d', 0, 'a', -0.620, 'alpha', 0);
 ur5_L(3) = Link('d', 0, 'a', -0.559, 'alpha', 0);
