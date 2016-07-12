@@ -32,12 +32,12 @@ alpha_y = atan2(acl_x, 9.81 + acl_z);
 alpha_x = atan2(acl_y, 9.81 + acl_z);
 
 %construct the UR5 robot
-ur5_L(1) = Link('d', 0.182, 'a', 0, 'alpha', pi/2);
-ur5_L(2) = Link('d', 0, 'a', -0.620, 'alpha', 0);
-ur5_L(3) = Link('d', 0, 'a', -0.559, 'alpha', 0);
-ur5_L(4) = Link('d', 0, 'a', 0, 'alpha', pi/2);
-ur5_L(5) = Link('d', 0, 'a', 0, 'alpha', -pi/2);
-ur5_L(6) = Link('d', 0, 'a', 0, 'alpha', 0);
+ur5_L(1) = Link('d', 0.089159, 'a', 0, 'alpha', pi/2);
+ur5_L(2) = Link('d', 0, 'a', -0.425, 'alpha', 0);
+ur5_L(3) = Link('d', 0, 'a', -0.39225, 'alpha', 0);
+ur5_L(4) = Link('d', 0.10915, 'a', 0, 'alpha', pi/2);
+ur5_L(5) = Link('d', 0.09565, 'a', 0, 'alpha', -pi/2);
+ur5_L(6) = Link('d', 0.0823, 'a', 0, 'alpha', 0);
 
 ur5_full = SerialLink(ur5_L, 'name', 'ur5-6axis');
 ur5_full.ikineType = 'puma';
