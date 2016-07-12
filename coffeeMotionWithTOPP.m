@@ -82,7 +82,8 @@ qc_for = qc(1:end-1,:);
 qc_lat = qc(2:end,:);
 qc_d_for = qc_d(1:end-1,:);
 qc_d_lat = qc_d(2:end,:);
+dist_d = gradient(dist);
 
 % save in csv file
-output = [qc_for, qc_lat, qc_d_for, qc_d_lat];
-%csvwrite('input.csv',output)
+output = [qc_for, qc_lat, qc_d_for, qc_d_lat, dist_d(1:end-1,:)];
+csvwrite('input.csv',output)
